@@ -1,6 +1,5 @@
 # Quick Description
 
-I train a two-hidden-layer multilayer perceptron on real handwritten digit images. The project focuses on a clear neural-network pipeline, early stopping, and balanced held-out evaluation with accuracy and macro-F1.
+A two-hidden-layer MLP is compared with standardized logistic regression on handwritten digits. The linear baseline wins, demonstrating that additional neural-network complexity is not automatically justified.
 
-**Dataset:** scikit-learn Digits  
-**Main ideas:** MLP, neural networks, early stopping, multiclass classification
+**Main ideas:** MLP, strong baselines, early stopping, Macro-F1, model-selection discipline

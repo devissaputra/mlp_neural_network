@@ -1,19 +1,9 @@
-# Portfolio Summary
+# Multilayer Perceptron vs Linear Baseline
 
-## Multilayer Perceptron for Handwritten Digits
+**Focus:** testing whether neural-network complexity earns its place.
 
-I train a compact two-hidden-layer MLP on 8 × 8 handwritten digit images. The inputs are standardized and the model uses early stopping.
+A two-hidden-layer MLP (128 → 64) and standardized logistic regression are evaluated on the same handwritten-digits split. Logistic regression reaches 0.9778 accuracy and 0.9776 Macro-F1, while the MLP reaches 0.9578 and 0.9575.
 
-### Images
+The project deliberately keeps the negative result: on this small 8×8 dataset, the simpler linear model is better. That makes the repository a model-selection exercise rather than a neural-network showcase.
 
-![Project overview](assets/01_cover.svg)
-
-![Training pipeline](assets/02_data_pipeline.svg)
-
-![Network and optimization](assets/03_data_or_model.svg)
-
-![Held-out evaluation](assets/04_evaluation_or_results.svg)
-
-**Architecture:** 64 inputs → 128 hidden units → 64 hidden units → 10 classes.
-
-**Key result:** 0.9578 accuracy and 0.9575 macro-F1 in the recorded run.
+The experiment is import-safe, reproducible, behaviorally tested, and checked by GitHub Actions.
