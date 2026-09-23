@@ -1,5 +1,7 @@
-# Ethics and Responsible Use
+# Ethics and Limits
 
-This project is a research and learning artifact. Its models are not intended for autonomous high-stakes decisions.
+This project uses a public handwritten-digit benchmark and does not involve sensitive personal data.
 
-For human-related datasets, predictions should be treated as decision support, not labels of a person's ability or worth. Validate subgroup performance, document missingness and measurement bias, preserve privacy, and keep a human reviewer in the loop. For non-human datasets, document domain limits and avoid presenting benchmark performance as universal model quality.
+The main limitation is scope. Strong performance on a clean benchmark does not mean the same model will work on noisier handwriting, different image resolutions, or real document-processing systems.
+
+Any deployment would need testing on data that actually match the intended use.
