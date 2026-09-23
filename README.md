@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/devissaputra/mlp_neural_network/actions/workflows/ci.yml/badge.svg)](https://github.com/devissaputra/mlp_neural_network/actions/workflows/ci.yml)
 
+
+**Category:** AI Engineering
 ![Project overview](assets/01_cover.svg)
 
 A compact neural-network experiment with one rule: **the MLP has to earn its complexity by beating a strong linear baseline**.
