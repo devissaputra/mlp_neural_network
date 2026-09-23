@@ -72,18 +72,12 @@ pytest
 
 Tests verify deterministic data splitting, baseline/MLP metric output, and import-safe execution.
 
-## Why this repo matters
+## Why the negative result is useful
 
-This project demonstrates:
+The MLP loses to logistic regression on this split. I kept that result because it answers the actual engineering question: does the extra nonlinear capacity buy anything here? On this small, low-resolution dataset, it does not.
 
-- a neural classifier implemented with scikit-learn;
-- a meaningful baseline;
-- class-balanced evaluation through Macro-F1;
-- early stopping;
-- reproducible experiment code;
-- behavioral tests and CI;
-- willingness to keep a negative result when the simpler model is better.
+That makes the baseline more than a formality. It prevents the project from turning into a demonstration where the neural network is assumed to be better before the experiment starts.
 
-## Limitations
+## What I would test next
 
-One split cannot establish general model superiority. A stronger extension would repeat the comparison across seeds, tune both models with nested validation, add confidence intervals, and compare against CNN features or larger image datasets.
+I would repeat the comparison across several seeds, tune both models with nested validation, add confidence intervals, and then move to a larger image dataset where nonlinear representation learning has more room to help.
