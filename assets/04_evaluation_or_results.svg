@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675">
+<rect width="1200" height="675" fill="#f8fafc"/>
+<text x="60" y="75" font-family="Arial" font-size="34" font-weight="700" fill="#0f172a">Held-Out Evaluation</text>
+<text x="60" y="112" font-family="Arial" font-size="19" fill="#64748b">Performance is reported on the untouched 25% test split.</text>
+<rect x="75" y="185" width="315" height="350" rx="24" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="115" y="235" font-family="Arial" font-size="23" font-weight="700" fill="#1e40af">Accuracy</text>
+<text x="115" y="335" font-family="Arial" font-size="66" font-weight="700" fill="#0f172a">0.9578</text>
+<text x="115" y="385" font-family="Arial" font-size="20" fill="#64748b">correct predictions</text>
+<rect x="445" y="185" width="315" height="350" rx="24" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="485" y="235" font-family="Arial" font-size="23" font-weight="700" fill="#166534">Macro-F1</text>
+<text x="485" y="335" font-family="Arial" font-size="66" font-weight="700" fill="#0f172a">0.9575</text>
+<text x="485" y="385" font-family="Arial" font-size="20" fill="#64748b">balanced across 10 classes</text>
+<rect x="815" y="185" width="315" height="350" rx="24" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="855" y="235" font-family="Arial" font-size="23" font-weight="700" fill="#7e22ce">Training length</text>
+<text x="855" y="335" font-family="Arial" font-size="66" font-weight="700" fill="#0f172a">29</text>
+<text x="855" y="385" font-family="Arial" font-size="20" fill="#64748b">optimization iterations</text>
+<text x="855" y="430" font-family="Arial" font-size="19" fill="#475569">early stopping halted</text><text x="855" y="458" font-family="Arial" font-size="19" fill="#475569">before max_iter = 450</text>
+<rect x="220" y="575" width="760" height="60" rx="16" fill="#ecfeff" stroke="#67e8f9" stroke-width="2"/>
+<text x="600" y="613" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#155e75">Macro-F1 closely tracks accuracy, suggesting performance is not dominated by only a few digit classes.</text>
+</svg>
