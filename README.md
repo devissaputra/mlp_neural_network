@@ -1,65 +1,60 @@
-# Multilayer Perceptron for Handwritten Digits
+# Multilayer Perceptron vs Linear Baseline on Handwritten Digits
+
+[![CI](https://github.com/devissaputra/mlp_neural_network/actions/workflows/ci.yml/badge.svg)](https://github.com/devissaputra/mlp_neural_network/actions/workflows/ci.yml)
 
 ![Project overview](assets/01_cover.svg)
 
-I built this project as my first neural-network classifier in this series. The aim is to keep the model small enough to understand while still learning nonlinear patterns from real image data.
-
-The model is a two-hidden-layer multilayer perceptron trained on scikit-learn's handwritten digits dataset.
+A compact neural-network experiment with one rule: **the MLP has to earn its complexity by beating a strong linear baseline**.
 
 ## Data
 
-The dataset contains:
+The scikit-learn handwritten-digits dataset contains:
 
-- 1,797 digit images;
-- 8 × 8 grayscale pixels;
-- 64 numerical input features;
-- 10 classes, digits 0 through 9.
+- 1,797 grayscale images
+- 8 × 8 pixels
+- 64 numerical inputs
+- 10 classes
+- stratified 75/25 train/test split
+- seed 42
 
-I use a stratified 75/25 train/test split.
-
-## How the experiment works
+## Models
 
 ![Training pipeline](assets/02_data_pipeline.svg)
 
-The pipeline standardizes the 64 pixel features and then fits an `MLPClassifier`.
+Both models use standardized inputs.
 
-The network is:
+### Linear baseline
+Multinomial logistic regression.
 
+### MLP
 ```text
-64 input features
-      ↓
+64 inputs
+  ↓
 128 hidden units
-      ↓
+  ↓
 64 hidden units
-      ↓
+  ↓
 10 output classes
 ```
 
-Early stopping is enabled, with `random_state=42` and a maximum of 450 iterations.
+The MLP uses early stopping and a maximum of 450 optimization iterations.
 
-## Training behaviour
+## Recorded results
 
 ![Network and optimization](assets/03_data_or_model.svg)
 
-The recorded run stopped after 29 optimization iterations, well before the maximum. That is expected when early stopping decides that further training is no longer improving the internal validation result.
+| Model | Accuracy | Macro-F1 |
+|---|---:|---:|
+| Logistic regression | **0.9778** | **0.9776** |
+| MLP | 0.9578 | 0.9575 |
 
-## Results
+The MLP stopped after 29 optimization iterations.
 
 ![Held-out evaluation](assets/04_evaluation_or_results.svg)
 
-The recorded run produced:
+The important result is that the neural network does **not** win here. The dataset is small, low-resolution, and already close to linearly separable after scaling. That makes this a better engineering lesson than a cherry-picked neural-network victory: extra model complexity should be justified by evidence.
 
-| Metric | Result |
-|---|---:|
-| Accuracy | 0.9578 |
-| Macro-F1 | 0.9575 |
-| Optimization iterations | 29 |
-
-Macro-F1 is almost the same as accuracy, which suggests that the model is performing fairly consistently across the ten digit classes rather than relying on only a few easy classes.
-
-This is still one split on a small benchmark dataset. A stronger comparison would repeat the experiment across several seeds and compare it directly with a linear classifier and the CNN in the next project.
-
-## Run it
+## Run
 
 ```bash
 python -m venv .venv
@@ -68,10 +63,27 @@ pip install -r requirements.txt
 python src/run_experiment.py
 ```
 
-On Windows, use `.venv\Scripts\activate`.
+## Test
 
-## Repository notes
+```bash
+pip install pytest
+pytest
+```
 
-- [DATA.md](DATA.md) explains the dataset.
-- [REPRODUCIBILITY.md](REPRODUCIBILITY.md) records the settings needed to repeat the run.
-- [paper/paper.md](paper/paper.md) contains the longer technical write-up.
+Tests verify deterministic data splitting, baseline/MLP metric output, and import-safe execution.
+
+## Why this repo matters
+
+This project demonstrates:
+
+- a neural classifier implemented with scikit-learn;
+- a meaningful baseline;
+- class-balanced evaluation through Macro-F1;
+- early stopping;
+- reproducible experiment code;
+- behavioral tests and CI;
+- willingness to keep a negative result when the simpler model is better.
+
+## Limitations
+
+One split cannot establish general model superiority. A stronger extension would repeat the comparison across seeds, tune both models with nested validation, add confidence intervals, and compare against CNN features or larger image datasets.

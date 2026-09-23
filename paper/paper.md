@@ -1,48 +1,17 @@
-# Multilayer Perceptron for Handwritten Digits
+# Multilayer Perceptron vs Linear Baseline on Handwritten Digits
 
-## Question
+## Abstract
 
-How well can a small fully connected neural network classify handwritten digits when the model is kept simple and the training process is easy to inspect?
-
-## Data
-
-I use scikit-learn's digits dataset. It contains 1,797 images, each represented by 64 pixel values.
-
-I create a stratified 75/25 train/test split.
-
-## Method
-
-The 64 inputs are standardized and passed to an MLP with two hidden layers:
-
-```text
-64 → 128 → 64 → 10
-```
-
-The classifier uses early stopping, `random_state=42`, and a maximum of 450 iterations.
+This experiment compares a two-hidden-layer MLP with standardized logistic regression on the scikit-learn handwritten-digits dataset. The comparison is included to test whether nonlinear neural-network complexity improves held-out performance on a small 8×8 image benchmark.
 
 ## Results
 
-| Metric | Result |
-|---|---:|
-| Accuracy | 0.9578 |
-| Macro-F1 | 0.9575 |
-| Optimization iterations | 29 |
+Logistic regression reaches 0.9778 accuracy and 0.9776 Macro-F1. The MLP reaches 0.9578 accuracy and 0.9575 Macro-F1 and stops after 29 optimization iterations.
 
 ## Interpretation
 
-Accuracy and macro-F1 are almost identical, which suggests that performance is fairly balanced across the ten classes.
-
-Early stopping ended the recorded run after 29 iterations, so the model did not need the full optimization budget.
+The linear baseline outperforms the MLP in this recorded split. This negative result is useful: the dataset is small and low-dimensional enough that a strong linear model remains highly competitive. Model complexity should therefore be justified empirically rather than assumed to be superior.
 
 ## Limitations
 
-This is one benchmark dataset and one train/test split. The model also ignores the two-dimensional structure of the images because all pixels are treated as a flat vector.
-
-That limitation leads naturally to the CNN project, where the same kind of data is processed spatially.
-
-## Reproduce
-
-```bash
-pip install -r requirements.txt
-python src/run_experiment.py
-```
+A stronger comparison would repeat the experiment across seeds, tune both models under nested validation, and include uncertainty intervals.
