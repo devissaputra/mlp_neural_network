@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675">
+<rect width="1200" height="675" fill="#f8fafc"/>
+<text x="60" y="75" font-family="Arial" font-size="34" font-weight="700" fill="#0f172a">Network Architecture & Optimization</text>
+<text x="60" y="112" font-family="Arial" font-size="19" fill="#64748b">A fully connected feed-forward network learns nonlinear decision boundaries over standardized pixel intensities.</text>
+<rect x="60" y="170" width="690" height="425" rx="22" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+<g font-family="Arial" text-anchor="middle">
+<text x="145" y="220" font-size="21" font-weight="700" fill="#1e40af">Input</text><text x="310" y="220" font-size="21" font-weight="700" fill="#166534">Hidden 1</text><text x="475" y="220" font-size="21" font-weight="700" fill="#7e22ce">Hidden 2</text><text x="640" y="220" font-size="21" font-weight="700" fill="#9a3412">Output</text>
+</g>
+<g fill="#bfdbfe" stroke="#60a5fa" stroke-width="2"><circle cx="145" cy="275" r="15"/><circle cx="145" cy="325" r="15"/><circle cx="145" cy="375" r="15"/><circle cx="145" cy="425" r="15"/><circle cx="145" cy="475" r="15"/></g>
+<g fill="#bbf7d0" stroke="#4ade80" stroke-width="2"><circle cx="310" cy="255" r="15"/><circle cx="310" cy="300" r="15"/><circle cx="310" cy="345" r="15"/><circle cx="310" cy="390" r="15"/><circle cx="310" cy="435" r="15"/><circle cx="310" cy="480" r="15"/></g>
+<g fill="#e9d5ff" stroke="#c084fc" stroke-width="2"><circle cx="475" cy="275" r="15"/><circle cx="475" cy="325" r="15"/><circle cx="475" cy="375" r="15"/><circle cx="475" cy="425" r="15"/><circle cx="475" cy="475" r="15"/></g>
+<g fill="#fed7aa" stroke="#fb923c" stroke-width="2"><circle cx="640" cy="255" r="15"/><circle cx="640" cy="300" r="15"/><circle cx="640" cy="345" r="15"/><circle cx="640" cy="390" r="15"/><circle cx="640" cy="435" r="15"/><circle cx="640" cy="480" r="15"/></g>
+<g stroke="#94a3b8" stroke-width="1.4" opacity="0.65">
+<path d="M160 275 L295 255"/><path d="M160 325 L295 345"/><path d="M160 375 L295 435"/><path d="M325 300 L460 275"/><path d="M325 390 L460 375"/><path d="M325 480 L460 475"/><path d="M490 275 L625 255"/><path d="M490 375 L625 390"/><path d="M490 475 L625 480"/>
+</g>
+<g font-family="Arial" text-anchor="middle" fill="#475569"><text x="145" y="535" font-size="18">64 features</text><text x="310" y="535" font-size="18">128 neurons</text><text x="475" y="535" font-size="18">64 neurons</text><text x="640" y="535" font-size="18">10 classes</text></g>
+<rect x="800" y="170" width="330" height="425" rx="22" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="835" y="220" font-family="Arial" font-size="23" font-weight="700" fill="#0f172a">Optimization trace</text>
+<polyline points="845,500 875,430 905,390 935,355 965,325 995,300 1025,282 1055,270 1085,265" fill="none" stroke="#2563eb" stroke-width="5"/>
+<line x1="845" y1="520" x2="1090" y2="520" stroke="#64748b" stroke-width="2"/><line x1="845" y1="520" x2="845" y2="255" stroke="#64748b" stroke-width="2"/>
+<text x="965" y="555" text-anchor="middle" font-family="Arial" font-size="18" fill="#64748b">training iteration</text>
+<text x="830" y="265" text-anchor="end" font-family="Arial" font-size="18" fill="#64748b">loss</text>
+<text x="965" y="315" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700" fill="#1e40af">29 iterations</text>
+</svg>
