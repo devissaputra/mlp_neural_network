@@ -1,37 +1,29 @@
-# 06. Multilayer Neural Network ★★★★
+# Multilayer Perceptron for Handwritten Digits
 
-![Cover](assets/01_cover.svg)
+![Project overview](assets/01_cover.svg)
 
-> **Quick description:** Train a multilayer perceptron on real handwritten digit images and inspect optimization behavior and held-out classification performance.
+I built this project as my first neural-network classifier in this series. The aim is to keep the model small enough to understand while still learning nonlinear patterns from real image data.
 
-## Why this project matters
-This AI Engineering project moves from classical machine learning into **neural-network optimization** while keeping the experiment compact and reproducible. The model learns a nonlinear mapping from 64 pixel-intensity features to 10 handwritten digit classes.
+The model is a two-hidden-layer multilayer perceptron trained on scikit-learn's handwritten digits dataset.
 
-The project uses the real **Optical Recognition of Handwritten Digits** dataset, standardizes the inputs, trains a two-hidden-layer MLP with early stopping, and evaluates the final model on a stratified held-out test set.
+## Data
 
-## Dataset
-- **Dataset:** Optical Recognition of Handwritten Digits
-- **Source:** scikit-learn `load_digits`
-- **Samples:** 1,797 digit images
-- **Input representation:** 8×8 grayscale images flattened to 64 numerical features
-- **Classes:** digits 0–9
-- **Data provenance and usage:** [DATA.md](DATA.md)
+The dataset contains:
 
-## Research pipeline
-![MLP training pipeline](assets/02_data_pipeline.svg)
+- 1,797 digit images;
+- 8 × 8 grayscale pixels;
+- 64 numerical input features;
+- 10 classes, digits 0 through 9.
 
-### Processing steps
-1. Load the real handwritten-digit dataset.
-2. Create a stratified 75/25 train-test split.
-3. Standardize features using `StandardScaler` fitted inside the training pipeline.
-4. Train an MLP with hidden layers **128 → 64**.
-5. Use early stopping to terminate optimization when validation performance stops improving.
-6. Evaluate the untouched test set with accuracy and macro-F1.
+I use a stratified 75/25 train/test split.
 
-## Network architecture and optimization
-![Network architecture and optimization](assets/03_data_or_model.svg)
+## How the experiment works
 
-The implemented architecture is:
+![Training pipeline](assets/02_data_pipeline.svg)
+
+The pipeline standardizes the 64 pixel features and then fits an `MLPClassifier`.
+
+The network is:
 
 ```text
 64 input features
@@ -43,53 +35,43 @@ The implemented architecture is:
 10 output classes
 ```
 
-Because every hidden layer is fully connected, the MLP can learn nonlinear combinations of pixel intensities that a purely linear classifier cannot represent.
+Early stopping is enabled, with `random_state=42` and a maximum of 450 iterations.
 
-The recorded optimization stopped after **29 iterations**, well before the configured `max_iter=450`, because early stopping was enabled.
+## Training behaviour
 
-## Held-out evaluation
+![Network and optimization](assets/03_data_or_model.svg)
+
+The recorded run stopped after 29 optimization iterations, well before the maximum. That is expected when early stopping decides that further training is no longer improving the internal validation result.
+
+## Results
+
 ![Held-out evaluation](assets/04_evaluation_or_results.svg)
 
-Generated metrics from the included experiment:
+The recorded run produced:
 
-```json
-{
-  "accuracy": 0.9577777777777777,
-  "macro_f1": 0.9575034056271982,
-  "epochs": 29
-}
-```
+| Metric | Result |
+|---|---:|
+| Accuracy | 0.9578 |
+| Macro-F1 | 0.9575 |
+| Optimization iterations | 29 |
 
-### Interpretation
-- **Accuracy = 0.9578** means roughly 95.8% of held-out digit images were classified correctly.
-- **Macro-F1 = 0.9575** is very close to accuracy, suggesting performance is broadly balanced across the ten digit classes rather than being driven by only a few easy classes.
-- Early stopping ended training after **29 iterations**, limiting unnecessary optimization after validation improvement stalled.
-- These results are specific to this dataset and architecture and should not be interpreted as evidence that an MLP is the best image model in general.
+Macro-F1 is almost the same as accuracy, which suggests that the model is performing fairly consistently across the ten digit classes rather than relying on only a few easy classes.
 
-## Reproduce
+This is still one split on a small benchmark dataset. A stronger comparison would repeat the experiment across several seeds and compare it directly with a linear classifier and the CNN in the next project.
+
+## Run it
+
 ```bash
 python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+source .venv/bin/activate
 pip install -r requirements.txt
 python src/run_experiment.py
 ```
 
-Metrics are written to `results/metrics.json`.
+On Windows, use `.venv\Scripts\activate`.
 
-## Research documentation
-- [Scientific-style technical report](paper/paper.md)
-- [Quick description](QUICK_DESCRIPTION.md)
-- [Website-ready portfolio entry](PORTFOLIO.md)
-- [Data provenance](DATA.md)
-- [Reproducibility notes](REPRODUCIBILITY.md)
-- [Ethics and responsible use](ETHICS.md)
-- [Citation metadata](CITATION.cff)
+## Repository notes
 
-## Difficulty
-**★★★★ — advanced**
-
-## Academic integrity
-This repository is a research portfolio artifact, not a peer-reviewed publication. Reported metrics are generated by the included code on the stated real dataset.
-
-## Stronger research extension
-A publication-oriented extension would add repeated cross-validation, learning-rate and regularization ablations, calibration analysis, class-wise error inspection, comparisons with linear and CNN baselines, and uncertainty estimates across multiple random seeds.
+- [DATA.md](DATA.md) explains the dataset.
+- [REPRODUCIBILITY.md](REPRODUCIBILITY.md) records the settings needed to repeat the run.
+- [paper/paper.md](paper/paper.md) contains the longer technical write-up.
