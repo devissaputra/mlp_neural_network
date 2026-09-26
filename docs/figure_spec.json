@@ -1,0 +1,30 @@
+{
+  "question": "Does a nonlinear network beat a linear digit classifier?",
+  "data": "scikit-learn handwritten digits; 1,347 training and 450 test observations.",
+  "method": "Shared stratified split; training-fitted scaling; multinomial logistic regression versus MLP.",
+  "formula": "Accuracy = correct / n; macro-F1 = mean(F1 for each digit class).",
+  "interpretation": "Macro-F1 gives each class equal weight. A single seeded holdout does not establish a universal ranking of architectures; training and preprocessing choices remain part of the comparison.",
+  "status": "RECORDED SMALL-SAMPLE BENCHMARK | see validation scope",
+  "source": "results/metrics.json",
+  "rows": [
+    {
+      "label": "logistic",
+      "path": [
+        "logistic",
+        "accuracy"
+      ],
+      "unit": "accuracy ↑"
+    },
+    {
+      "label": "mlp",
+      "path": [
+        "mlp",
+        "accuracy"
+      ],
+      "unit": "accuracy ↑"
+    }
+  ],
+  "table_title": "Selected recorded values (units and context shown)",
+  "evidence_note": "See CALCULATIONS.md for data status, execution scope and interpretation.",
+  "finding": "This experiment compares a multilayer perceptron with multinomial logistic regression on the same standardized handwritten-digit split. The recorded linear baseline reaches 0.9778 accuracy, compared with 0.9578 for the MLP, with macro-F1 showing the same ordering. Keeping this negative result makes the engineering question clear: additional nonlinear capacity must justify its complexity under an explicit evaluation protocol."
+}

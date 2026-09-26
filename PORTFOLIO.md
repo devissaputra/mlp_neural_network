@@ -1,9 +1,5 @@
-# Multilayer Perceptron vs Linear Baseline
+# Multilayer Perceptron vs Linear Baseline on Handwritten Digits
 
-**Focus:** testing whether neural-network complexity earns its place.
+This experiment compares a multilayer perceptron with multinomial logistic regression on the same standardized handwritten-digit split. The recorded linear baseline reaches 0.9778 accuracy, compared with 0.9578 for the MLP, with macro-F1 showing the same ordering. Keeping this negative result makes the engineering question clear: additional nonlinear capacity must justify its complexity under an explicit evaluation protocol.
 
-A two-hidden-layer MLP (128 → 64) and standardized logistic regression are evaluated on the same handwritten-digits split. Logistic regression reaches 0.9778 accuracy and 0.9776 Macro-F1, while the MLP reaches 0.9578 and 0.9575.
-
-The project deliberately keeps the negative result: on this small 8×8 dataset, the simpler linear model is better. That makes the repository a model-selection exercise rather than a neural-network showcase.
-
-The experiment is import-safe, reproducible, behaviorally tested, and checked by GitHub Actions.
+See [CALCULATIONS.md](CALCULATIONS.md) for evidence and verification scope.

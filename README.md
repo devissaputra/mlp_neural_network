@@ -1,10 +1,26 @@
 # Multilayer Perceptron vs Linear Baseline on Handwritten Digits
 
+This experiment compares a multilayer perceptron with multinomial logistic regression on the same standardized handwritten-digit split. The recorded linear baseline reaches 0.9778 accuracy, compared with 0.9578 for the MLP, with macro-F1 showing the same ordering. Keeping this negative result makes the engineering question clear: additional nonlinear capacity must justify its complexity under an explicit evaluation protocol.
+
+## Start here
+
+- [Calculations, evidence and verification scope](CALCULATIONS.md)
+- [Figure sources and exact numerical paths](docs/figure_spec.json)
+- [Working paper](paper/paper.md)
+- [Data and provenance](DATA.md)
+
+![Study question, data, design and interpretation](assets/review_overview.svg)
+
+![Defined calculation and source-linked evidence](assets/review_calculations.svg)
+
+**Review scope:** The existing suite requires unavailable dependencies; no full-suite pass is claimed. The complete data/model experiment was not rerun in this review.
+
+## Detailed project documentation
+
 [![CI](https://github.com/devissaputra/mlp_neural_network/actions/workflows/ci.yml/badge.svg)](https://github.com/devissaputra/mlp_neural_network/actions/workflows/ci.yml)
 
 
 **Category:** AI Engineering
-![Project overview](assets/01_cover.svg)
 
 A compact neural-network experiment with one rule: **the MLP has to earn its complexity by beating a strong linear baseline**.
 
@@ -21,7 +37,6 @@ The scikit-learn handwritten-digits dataset contains:
 
 ## Models
 
-![Training pipeline](assets/02_data_pipeline.svg)
 
 Both models use standardized inputs.
 
@@ -43,7 +58,6 @@ The MLP uses early stopping and a maximum of 450 optimization iterations.
 
 ## Recorded results
 
-![Network and optimization](assets/03_data_or_model.svg)
 
 | Model | Accuracy | Macro-F1 |
 |---|---:|---:|
@@ -52,7 +66,6 @@ The MLP uses early stopping and a maximum of 450 optimization iterations.
 
 The MLP stopped after 29 optimization iterations.
 
-![Held-out evaluation](assets/04_evaluation_or_results.svg)
 
 The important result is that the neural network does **not** win here. The dataset is small, low-resolution, and already close to linearly separable after scaling. That makes this a better engineering lesson than a cherry-picked neural-network victory: extra model complexity should be justified by evidence.
 

@@ -15,3 +15,31 @@ The linear baseline outperforms the MLP in this recorded split. This negative re
 ## Limitations
 
 A stronger comparison would repeat the experiment across seeds, tune both models under nested validation, and include uncertainty intervals.
+
+
+## Calculation definitions and evidence audit
+
+Accuracy = correct / n; macro-F1 = mean(F1 for each digit class).
+
+Macro-F1 gives each class equal weight. A single seeded holdout does not establish a universal ranking of architectures; training and preprocessing choices remain part of the comparison.
+
+This experiment compares a multilayer perceptron with multinomial logistic regression on the same standardized handwritten-digit split. The recorded linear baseline reaches 0.9778 accuracy, compared with 0.9578 for the MLP, with macro-F1 showing the same ordering. Keeping this negative result makes the engineering question clear: additional nonlinear capacity must justify its complexity under an explicit evaluation protocol.
+
+The [calculation guide](../CALCULATIONS.md) provides exact evidence paths and a function-level implementation map.
+
+![Study design](../assets/review_overview.svg)
+
+![Calculation and selected evidence](../assets/review_calculations.svg)
+
+### Selected evidence and interpretation
+
+| Quantity | Value | Unit / meaning | JSON path |
+|---|---:|---|---|
+| logistic | 0.9777777777777777 | accuracy ↑ | `logistic.accuracy` |
+| mlp | 0.9577777777777777 | accuracy ↑ | `mlp.accuracy` |
+
+These values are read from `results/metrics.json`. They must be interpreted with the split, data status and limitations above. The complete data/model experiment was not rerun in this review.
+
+### Reproduction and claim boundaries
+
+The existing suite requires unavailable dependencies; no full-suite pass is claimed. The figure generator can be checked with `python scripts/build_review_figures.py --check`. This verifies the displayed calculation evidence, not an independent replication of the complete scientific experiment. The manuscript is a working report, not a peer-reviewed publication.

@@ -31,4 +31,10 @@ The linear baseline outperforms the MLP on this small 8-by-8 benchmark. The nega
 \section{Limitations}
 Repeated seeds, nested tuning, uncertainty intervals, and larger image datasets would support stronger conclusions.
 
+\section{Calculation audit and reproduction scope}
+This experiment compares a multilayer perceptron with multinomial logistic regression on the same standardized handwritten-digit split. The recorded linear baseline reaches 0.9778 accuracy, compared with 0.9578 for the MLP, with macro-F1 showing the same ordering. Keeping this negative result makes the engineering question clear: additional nonlinear capacity must justify its complexity under an explicit evaluation protocol.
+
+Macro-F1 gives each class equal weight. A single seeded holdout does not establish a universal ranking of architectures; training and preprocessing choices remain part of the comparison.
+
+See the repository calculation guide for exact source paths. The full experiment was not independently rerun during this documentation review.
 \end{document}

@@ -1,3 +1,7 @@
+# Calculation reading guide: ../CALCULATIONS.md (repository root).
+# Accuracy = correct / n; macro-F1 = mean(F1 for each digit class).
+# Macro-F1 gives each class equal weight. A single seeded holdout does not establish a universal ranking of architectures; training and preprocessing choices remain part of the comparison.
+
 from __future__ import annotations
 
 import json
